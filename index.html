@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Подаруй враження!</title>
+    <style>
+        body {
+            font-family: Verdana, sans-serif; 
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 10px;
+            background-color: #f8f9fa;
+            position: relative; 
+            width: 100%; 
+            box-sizing: border-box;
+        }
+
+        header img {
+            height: 50px;
+            border-radius: 5px; 
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 16px; 
+            font-weight: 600;
+            color: #333; 
+            margin-right: 20px;
+        }
+
+        button {
+            padding: 10px 20px; 
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px; 
+            font-size: 14px; 
+            font-weight: 500;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 0;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 330px;
+            height: auto; 
+            transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effect */
+        }
+
+        .product-card:hover {
+            transform: scale(1.02); /* Slight zoom effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px; 
+            border-radius: 5px;
+            object-fit: cover; 
+        }
+
+        .product-card h3 {
+            font-size: 1.2em; 
+            padding: 0 10px; 
+            margin: 10px 0 5px 0; 
+            font-weight: 700; 
+        }
+
+        .product-description {
+            padding: 0 10px; 
+            margin-bottom: 5px; 
+            font-size: 0.95em; 
+        }
+
+        .product-card p.price {
+            font-size: 1.1em; 
+            padding: 0 10px; 
+            color: #28a745;
+            margin: 5px 0; 
+        }
+
+        .buy-button {
+            padding: 8px 16px; 
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            margin: 10px; 
+        }
+
+        @media (min-width: 1200px) {
+            .products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 960px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: 1fr;
+                justify-content: center;
+            }
+
+            nav ul {
+                display: none; /* Hide default navigation */
+            }
+
+            .mobile-header {
+                display: flex; /* Show mobile header */
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .hamburger {
+                cursor: pointer;
+                font-size: 24px;
+            }
+
+            .dropdown {
+                display: none;
+                position: absolute;
+                background-color: #f8f9fa;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+                top: 60px;
+                left: 10px;
+                padding: 10px;
+            }
+
+            .dropdown ul {
+                flex-direction: column; /* Vertical dropdown */
+            }
+
+            .dropdown ul li {
+                margin: 0; /* Reset margin */
+                padding: 5px 0; /* Padding for dropdown items */
+            }
+
+            .dropdown.show {
+                display: flex; /* Show dropdown when activated */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="display: flex; justify-content: space-between; align-items: center;" class="desktop-header">
+        <img src="icon.png" alt="Логотип">
+        <nav>
+            <ul>
+                <li><a href="#home">Головна</a></li>
+                <li><a href="#products">Наші товари</a></li>
+                <li><a href="#about">Про нас</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+        </nav>
+        <button>Вхід</button>
+    </div>
+
+    <div class="mobile-header" style="display: none;">
+        <img src="icon.png" alt="Логотип">
+        <div class="hamburger" onclick="toggleDropdown()">☰</div>
+        <div class="dropdown">
+            <ul>
+                <li><a href="#home">Головна</a></li>
+                <li><a href="#products">Наші товари</a></li>
+                <li><a href="#about">Про нас</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+        </div>
+        <button>Вхід</button>
+    </div>
+</header>
+
+<main class="content">
+    <section id="products">
+        <h2>Варіанти подарунків</h2>
+        <div class="products">
+            <article class="product-card">
+                <img src="product1.avif" alt="Стрибок з парашутом">
+                <h3>Стрибок з парашутом</h3>
+                <div class="product-description">
+                    <p><b>Опис продукту:</b> Подаруйте справжній адреналін і свободу! </p>
+                    <p>Це незабутнє враження підходить для любителів екстриму та тих, хто хоче випробувати свої межі.</p>
+                </div>
+                <p class="price">$299.99</p>
+                <button class="buy-button">Купити</button>
+            </article>
+
+            <article class="product-card">
+                <img src="product2.jpg" alt="Політ на повітряній кулі">
+                <h3>Політ на повітряній кулі</h3>
+                <div class="product-description">
+                    <p><b>Опис продукту:</b> Незабутній політ над мальовничими краєвидами на двох.</p>
+                    <p>Відчуйте свободу польоту та захоплюючі види з висоти пташиного польоту.</p>
+                </div>
+                <p class="price">$199.99</p>
+                <button class="buy-button">Купити</button>
+            </article>
+
+            <article class="product-card">
+                <img src="product3.avif" alt="Картинг">
+                <h3>Картинг</h3>
+                <div class="product-description">
+                    <p><b>Опис продукту:</b> Насолоджуйтесь швидкістю на гоночній трасі!</p>
+                    <p>Ідеальний подарунок для любителів машин та адреналіну.</p>
+                </div>
+                <p class="price">$99.99</p>
+                <button class="buy-button">Купити</button>
+            </article>
+
+            <article class="product-card">
+                <img src="product4.avif" alt="Майстер-клас з кулінарії">
+                <h3>Майстер-клас з кулінарії</h3>
+                <div class="product-description">
+                    <p><b>Опис продукту:</b> Вчіться готувати як справжній шеф!</p>
+                    <p>Ідеальний подарунок для тих, хто любить кулінарію та нові вміння.</p>
+                </div>
+                <p class="price">$149.99</p>
+                <button class="buy-button">Купити</button>
+            </article>
+        </div>
+    </section>
+</main>
+
+<script>
+    function toggleDropdown() {
+        const dropdown = document.querySelector('.dropdown');
+        dropdown.classList.toggle('show');
+    }
+
+    window.addEventListener('resize', function() {
+        const mobileHeader = document.querySelector('.mobile-header');
+        const desktopHeader = document.querySelector('.desktop-header');
+        
+        if (window.innerWidth < 768) {
+            mobileHeader.style.display = 'flex';
+            desktopHeader.style.display = 'none';
+        } else {
+            mobileHeader.style.display = 'none';
+            desktopHeader.style.display = 'flex';
+        }
+    });
+
+    window.dispatchEvent(new Event('resize'));
+</script>
+
+</body>
+</html>
